@@ -1,0 +1,36 @@
+{
+  "outil": "Lovable",
+  "format": "lovable (copie texte du fil de l'interface)",
+  "fuseau": "heure de Paris, telle qu'affichée par l'interface",
+  "etapes": [
+    {
+      "heure": "10:05",
+      "etape": "prompt"
+    },
+    {
+      "heure": "10:22",
+      "etape": "retouche"
+    }
+  ],
+  "tokens": "non visible",
+  "credits": "5,9 crédits (5 couverts par l'enveloppe gratuite)",
+  "reflexion_cumulee_s": 57,
+  "totaux": {
+    "nb_appels": 7,
+    "appels_par_nature": {
+      "commande": 1,
+      "modification de fichier": 1,
+      "questions posées (série)": 2,
+      "recherche web": 3
+    }
+  },
+  "domaines_consultes": "non visible",
+  "fichiers_ecrits": {
+    "styles.css": 1
+  },
+  "saisi_manuellement": {
+    "duree_construction_affichee": "3 min 27 s (chronomètre de l'interface, capture)",
+    "fichiers_vus_sur_capture": "styles.css, __root.tsx, index.tsx"
+  },
+  "avertissement": "copie partielle du fil : sans horodatage ni détail des pages consultées ; les champs de « saisi_manuellement » viennent de captures, pas de la copie"
+}

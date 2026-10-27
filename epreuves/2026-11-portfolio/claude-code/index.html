@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="fr" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yohann Poiron — Interopérabilité de la santé et BlogNT</title>
+<meta name="description" content="Yohann Poiron, expert en interopérabilité des données de santé (FHIR, HL7, EHDS) et fondateur du média tech indépendant BlogNT.">
+<meta name="color-scheme" content="light dark">
+<style>
+:root{
+  --bg:#f6f2ea; --surface:#fffdf8; --ink:#1d2a33; --muted:#4f5f69;
+  --line:#d9d1c1; --brand:#2b4352; --accent:#a8560a; --accent-ink:#ffffff;
+  --focus:#0b5fff;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+:root[data-theme="dark"]{
+  --bg:#101a20; --surface:#17252d; --ink:#eee9df; --muted:#b2bec6;
+  --line:#2e414c; --brand:#9fc3d6; --accent:#f0a65a; --accent-ink:#1a1206;
+  --focus:#8ab4ff;
+}
+@media (prefers-color-scheme:dark){
+  :root[data-theme="auto"]{
+    --bg:#101a20; --surface:#17252d; --ink:#eee9df; --muted:#b2bec6;
+    --line:#2e414c; --brand:#9fc3d6; --accent:#f0a65a; --accent-ink:#1a1206;
+    --focus:#8ab4ff;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:1.0625rem/1.7 var(--sans)}
+a{color:var(--brand);text-underline-offset:.2em}
+a:hover{color:var(--accent)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:1rem;top:-4rem;background:var(--ink);color:var(--bg);padding:.6rem 1rem;border-radius:6px;z-index:10}
+.skip:focus{top:1rem}
+.wrap{width:min(100% - 2rem,64rem);margin-inline:auto}
+header.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.7rem}
+.logo{font-family:var(--serif);font-weight:700;font-size:1.15rem;color:var(--ink);text-decoration:none}
+nav ul{display:flex;gap:1.1rem;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+nav a{color:var(--ink);text-decoration:none;font-size:.95rem;padding:.3rem 0;border-bottom:2px solid transparent}
+nav a:hover{border-color:var(--accent);color:var(--ink)}
+.toggle{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:.35rem .8rem;font:inherit;font-size:.9rem;cursor:pointer;min-height:2.5rem}
+.toggle:hover{border-color:var(--accent)}
+.bar{display:flex;align-items:center;gap:1rem}
+@media (max-width:40rem){nav{display:none}}
+section{padding-block:clamp(3rem,8vw,6rem)}
+h1,h2,h3{font-family:var(--serif);line-height:1.15;margin:0 0 1rem;font-weight:700}
+h1{font-size:clamp(2.4rem,7vw,4.6rem);letter-spacing:-.02em}
+h2{font-size:clamp(1.7rem,4vw,2.5rem)}
+h3{font-size:1.3rem;margin-bottom:.3rem}
+.eyebrow{font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 1rem}
+.lead{font-size:clamp(1.15rem,2.2vw,1.4rem);max-width:40rem;color:var(--ink)}
+.hero{padding-top:clamp(3rem,9vw,7rem)}
+.hero em{font-style:italic;color:var(--accent)}
+.bridge{margin-block:2.5rem 0;color:var(--brand)}
+.bridge svg{width:100%;height:auto;max-height:90px;display:block}
+.bridge .lbl{display:flex;justify-content:space-between;font-size:.9rem;color:var(--muted)}
+.cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:999px;text-decoration:none;font-weight:600;border:2px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.08);color:var(--accent-ink)}
+.btn.ghost{color:var(--ink)}
+.btn.ghost:hover{background:var(--surface);color:var(--ink)}
+.prose p{max-width:42rem}
+.story{border-left:2px solid var(--line);margin:2rem 0 0;padding:0;list-style:none}
+.story li{position:relative;padding:0 0 2.4rem 1.8rem}
+.story li::before{content:"";position:absolute;left:-.45rem;top:.55rem;width:.8rem;height:.8rem;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.when{font-size:.85rem;color:var(--muted);font-weight:600;letter-spacing:.04em;margin:0}
+.story p{max-width:42rem;margin:.2rem 0 0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:clamp(1.3rem,3vw,2.2rem)}
+.grid{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));margin-top:1.5rem}
+.grid .card{padding:1.3rem}
+.grid p{margin:.3rem 0 .8rem;font-size:1rem}
+.note{font-size:.95rem;color:var(--muted)}
+.test{padding:0!important;overflow:hidden;display:flex;flex-direction:column}
+.test img{width:100%;height:auto;aspect-ratio:5/3;object-fit:cover;display:block;background:var(--line)}
+.test .body{padding:1.1rem 1.3rem 1.3rem}
+.test h3 a{color:var(--ink);text-decoration:none}
+.test h3 a:hover{color:var(--accent);text-decoration:underline}
+.score{margin:.6rem 0 0!important;font-family:var(--serif);color:var(--accent);display:flex;align-items:baseline;gap:.2rem}
+.score strong{font-size:2.2rem;line-height:1}
+.score span{color:var(--muted);font-size:1rem}
+ul.plain{padding-left:1.1rem;margin:.5rem 0 0}
+.contact{background:var(--brand);color:#fff;border-radius:18px;padding:clamp(1.8rem,5vw,3.5rem)}
+:root[data-theme="dark"] .contact,:root[data-theme="auto"] .contact{--cbg:var(--brand)}
+@media (prefers-color-scheme:dark){:root[data-theme="auto"] .contact{color:#10202a}}
+:root[data-theme="dark"] .contact{color:#10202a}
+.contact h2{color:inherit}
+.contact .btn{border-color:currentColor;color:inherit}
+.contact .btn:hover{background:rgba(255,255,255,.16);color:inherit}
+.contact a:focus-visible{outline-color:#fff}
+:root[data-theme="dark"] .contact a:focus-visible{outline-color:#10202a}
+footer{padding-block:2rem 3rem;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+@media (prefers-color-scheme:dark){:root[data-theme="auto"] .contact a:focus-visible{outline-color:#10202a}}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#accueil" aria-label="Yohann Poiron, accueil">Yohann Poiron</a>
+    <div class="bar">
+      <nav aria-label="Navigation principale">
+        <ul>
+          <li><a href="#parcours">Parcours</a></li>
+          <li><a href="#communaute">Communauté</a></li>
+          <li><a href="#blognt">BlogNT</a></li>
+          <li><a href="#tests">Tests</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="toggle" id="theme" type="button" aria-pressed="false">Mode sombre</button>
+    </div>
+  </div>
+</header>
+
+<main id="contenu">
+<section class="hero" id="accueil">
+  <div class="wrap">
+    <p class="eyebrow">Interopérabilité de la santé · FHIR · HL7 · EHDS</p>
+    <h1>Une donnée de santé qui ne circule pas <em>ne soigne personne.</em></h1>
+    <p class="lead">Je m'appelle Yohann Poiron. Depuis mes premiers stages en développement web médical, une idée me guide : une norme n'a de valeur que si elle sert vraiment un patient, un soignant, un établissement.</p>
+    <div class="bridge">
+      <svg viewBox="0 0 800 90" role="img" aria-label="Illustration : un fil relie la France à l'Europe, comme les standards relient les usages.">
+        <path d="M30 60 C 200 -10, 330 -10, 400 45 S 620 100, 770 30" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="30" cy="60" r="9" fill="var(--accent)"/>
+        <circle cx="400" cy="45" r="6" fill="currentColor"/>
+        <circle cx="770" cy="30" r="9" fill="var(--accent)"/>
+      </svg>
+      <div class="lbl" aria-hidden="true"><span>France</span><span>normes ↔ usages</span><span>Europe</span></div>
+    </div>
+    <div class="cta">
+      <a class="btn primary" href="#parcours">Lire mon parcours</a>
+      <a class="btn ghost" href="#contact">Me contacter</a>
+    </div>
+  </div>
+</section>
+
+<section id="parcours" aria-labelledby="t-parcours">
+  <div class="wrap prose">
+    <p class="eyebrow">Parcours</p>
+    <h2 id="t-parcours">Du développeur curieux à l'expert qui relie la France à l'Europe</h2>
+    <p>Tout commence à La Rochelle, avec des stages sur Mediboard, un système d'information hospitalier open source. J'y apprends que le plus difficile n'est pas de stocker une donnée de santé, mais de la faire circuler entre des logiciels qui ne se connaissent pas.</p>
+    <ol class="story">
+      <li>
+        <p class="when">2009 – 2024 · Xtrem Santé, La Rochelle</p>
+        <h3>Quinze ans à faire dialoguer des logiciels en HL7, FHIR et H'XML</h3>
+        <p>Comme manager interopérabilité, je fais en sorte que Mediboard, TAMM et AppFine échangent des informations médicales avec n'importe quel logiciel métier ou entrepôt de données du monde de la santé. Les débuts avaient été ceux d'un développeur web open source, la suite est celle d'un passeur de standards.</p>
+      </li>
+      <li>
+        <p class="when">2010 – 2020 · Université de La Rochelle</p>
+        <h3>Transmettre ce que le terrain m'apprenait</h3>
+        <p>Pendant dix ans, j'interviens en Master 2 Génie informatique pour montrer à des étudiants comment les établissements de santé s'échangent réellement des données, avec des fichiers H'XML de patients à manipuler dès les travaux pratiques.</p>
+      </li>
+      <li>
+        <p class="when">Depuis 2016 · Interop'Santé</p>
+        <h3>Animer la communauté, publier les profils</h3>
+        <p>J'anime les groupes de travail FHIR-France et IHE PAM-France, je participe à la publication des profils de ressources FHIR et du profil IHE PAM-France, et je forme au standard HL7 v2.5 et aux outils de test comme Gazelle.</p>
+      </li>
+      <li>
+        <p class="when">Depuis juin 2024 · Agence du Numérique en Santé</p>
+        <h3>Passer de la France à l'espace européen des données de santé</h3>
+        <p>Expert interopérabilité à l'ANS, je travaille sur l'architecture technique de Sesali et sur le projet Xt-EHR, qui définit des spécifications techniques en FHIR pour répondre au règlement EHDS, en lien avec les initiatives autour de MyHealth@EU.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="communaute" aria-labelledby="t-comm">
+  <div class="wrap">
+    <p class="eyebrow">Communauté</p>
+    <h2 id="t-comm">Ce que j'ai partagé, publiquement</h2>
+    <p class="lead">Les standards se construisent à plusieurs. Voici quelques rendez-vous où l'on peut me retrouver ou me relire.</p>
+    <div class="grid">
+      <article class="card">
+        <h3>Projectathon ANS 2026</h3>
+        <p>Atelier d'introduction à FHIR et au Serveur Multi-Terminologies (SMT), animé avec des collègues de l'ANS.</p>
+        <a href="https://esante.gouv.fr/webinaires/projectathon-2026-atelier-d-introduction-fhir-et-au-smt">Voir la page de l'atelier</a>
+      </article>
+      <article class="card">
+        <h3>FHIR France Meetup #13</h3>
+        <p>Présentation des API FHIR du SMT de l'ANS, co-présentée en 2025.</p>
+        <span class="note">Source : programme public du meetup</span>
+      </article>
+      <article class="card">
+        <h3>Journée française de l'interopérabilité</h3>
+        <p>En 2023, intervention sur FHIR-FR Core et sur la mise en place d'un serveur de terminologies.</p>
+        <a href="https://esante.gouv.fr/ens/evenements/sees-2023/journee-francaise-interoperabilite">Voir la journée</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="blognt" aria-labelledby="t-blog">
+  <div class="wrap">
+    <div class="card prose">
+      <p class="eyebrow">L'autre moitié</p>
+      <h2 id="t-blog">BlogNT, un média tech indépendant depuis 2011</h2>
+      <p>En parallèle des projets de santé, je dirige BlogNT, que j'ai fondé et dont je suis rédacteur en chef. Tutoriels, tests, actualités sur le mobile, les objets connectés ou le développement : un espace pour les amateurs de nouvelles technologies, qui m'oblige à rester curieux et à expliquer simplement.</p>
+      <p>C'est aussi ce qui nourrit mon travail dans la santé : savoir expliquer clairement un sujet technique à des publics très différents.</p>
+      <p><a class="btn primary" href="https://www.blog-nouvelles-technologies.fr/">Visiter BlogNT</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="tests" aria-labelledby="t-tests">
+  <div class="wrap">
+    <p class="eyebrow">Sur BlogNT</p>
+    <h2 id="t-tests">Derniers tests</h2>
+    <p class="lead">Ce que je teste, je le note sans détour. Trois tests à lire, avec la note de la rédaction.</p>
+    <div class="grid tests">
+      <article class="card test">
+        <img src="https://www.blog-nouvelles-technologies.fr/wp-content/uploads/2026/10/Fitbit_Air_86-1400x840.webp" alt="Le bracelet sans écran Fitbit Air de Google" width="1400" height="840" loading="lazy">
+        <div class="body">
+          <p class="when">12 octobre 2026</p>
+          <h3><a href="https://www.blog-nouvelles-technologies.fr/386363/test-google-fitbit-air/">Fitbit Air : le bracelet sans écran</a></h3>
+          <p class="score"><strong>7,8</strong><span>/10</span></p>
+        </div>
+      </article>
+      <article class="card test">
+        <img src="https://www.blog-nouvelles-technologies.fr/wp-content/uploads/2026/10/Galaxy_Z_Fold_8_46-1400x840.webp" alt="Le smartphone pliable Samsung Galaxy Z Fold 8" width="1400" height="840" loading="lazy">
+        <div class="body">
+          <p class="when">2 octobre 2026</p>
+          <h3><a href="https://www.blog-nouvelles-technologies.fr/381921/test-samsung-galaxy-z-fold-8/">Galaxy Z Fold 8 : le pliable format passeport</a></h3>
+          <p class="score"><strong>8,5</strong><span>/10</span></p>
+        </div>
+      </article>
+      <article class="card test">
+        <img src="https://www.blog-nouvelles-technologies.fr/wp-content/uploads/2026/09/Galaxy_Watch_Ultra_2_84-1400x840.webp" alt="La montre connectée Samsung Galaxy Watch Ultra 2" width="1400" height="840" loading="lazy">
+        <div class="body">
+          <p class="when">18 septembre 2026</p>
+          <h3><a href="https://www.blog-nouvelles-technologies.fr/382646/test-samsung-galaxy-watch-ultra-2/">Galaxy Watch Ultra 2 : la montre outdoor monte en gamme</a></h3>
+          <p class="score"><strong>8,6</strong><span>/10</span></p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="t-form">
+  <div class="wrap prose">
+    <p class="eyebrow">Formation &amp; langues</p>
+    <h2 id="t-form">Des bancs de l'IUT aux standards européens</h2>
+    <p>IUT Informatique de La Rochelle (2004 – 2006), licence IMAE (2006 – 2007), puis Master 2 Informatique et Mathématiques appliquées, parcours Urbanisation, à La Rochelle Université (2007 – 2009).</p>
+    <p>Je travaille en français (langue maternelle) et en anglais (usage professionnel). Outils du quotidien : MySQL, JavaScript, CSS.</p>
+  </div>
+</section>
+
+<section id="contact" aria-labelledby="t-contact">
+  <div class="wrap">
+    <div class="contact">
+      <p class="eyebrow" style="color:inherit;opacity:.85">Contact</p>
+      <h2 id="t-contact">Un projet d'interopérabilité, une question sur FHIR, un sujet pour BlogNT ?</h2>
+      <p class="lead" style="color:inherit">Écrivez-moi, je réponds volontiers.</p>
+      <div class="cta">
+        <a class="btn" href="mailto:contact@example.com">contact@example.com</a>
+        <a class="btn" href="https://www.linkedin.com/in/poironyohann" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Yohann Poiron · La Rochelle et périphérie</div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('theme');
+  var mq=window.matchMedia('(prefers-color-scheme: dark)');
+  function saved(){try{return localStorage.getItem('theme')}catch(e){return null}}
+  function isDark(){var t=root.dataset.theme;return t==='dark'||(t==='auto'&&mq.matches)}
+  function paint(){var d=isDark();btn.textContent=d?'Mode clair':'Mode sombre';btn.setAttribute('aria-pressed',String(d))}
+  var s=saved(); if(s==='light'||s==='dark') root.dataset.theme=s;
+  btn.addEventListener('click',function(){
+    var next=isDark()?'light':'dark';root.dataset.theme=next;
+    try{localStorage.setItem('theme',next)}catch(e){}
+    paint();
+  });
+  mq.addEventListener('change',paint);
+  paint();
+})();
+</script>
+</body>
+</html>

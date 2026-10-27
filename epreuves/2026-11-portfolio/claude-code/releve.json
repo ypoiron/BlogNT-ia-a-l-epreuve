@@ -1,0 +1,138 @@
+{
+  "outil": "Claude Code",
+  "format": "claude-code",
+  "fuseau": "UTC",
+  "tours": [
+    {
+      "n": 1,
+      "debut": "08:04:50",
+      "premier_appel_outil": "08:04:53",
+      "questions_posees": "08:05:30",
+      "reponses_recues": "08:09:24",
+      "premier_fichier_ecrit": "08:10:11",
+      "premier_message_apres_ecriture": "08:10:46",
+      "fin": "08:10:46",
+      "tokens": {
+        "entree": 18,
+        "cache_ecrit": 41583,
+        "cache_lu": 706577,
+        "sortie": 13121
+      },
+      "nb_appels": 19,
+      "appels_par_outil": {
+        "AskUserQuestion": 1,
+        "Bash": 2,
+        "Edit": 1,
+        "Read": 1,
+        "ToolSearch": 1,
+        "WebFetch": 2,
+        "WebSearch": 3,
+        "Write": 1,
+        "mcp__Claude_Browser__computer": 1,
+        "mcp__Claude_Browser__javascript_tool": 1,
+        "mcp__Claude_Browser__resize_window": 2,
+        "mcp__ccd_turn__update_plan": 2,
+        "mcp__ccd_turn__wrap_up": 1
+      }
+    },
+    {
+      "n": 2,
+      "debut": "08:55:32",
+      "premier_appel_outil": null,
+      "questions_posees": null,
+      "reponses_recues": null,
+      "premier_fichier_ecrit": null,
+      "premier_message_apres_ecriture": null,
+      "fin": "08:55:35",
+      "tokens": {
+        "entree": 4,
+        "cache_ecrit": 1032,
+        "cache_lu": 94029,
+        "sortie": 233
+      },
+      "nb_appels": 0,
+      "appels_par_outil": {}
+    },
+    {
+      "n": 3,
+      "debut": "08:55:38",
+      "premier_appel_outil": "08:55:41",
+      "questions_posees": null,
+      "reponses_recues": null,
+      "premier_fichier_ecrit": "08:57:04",
+      "premier_message_apres_ecriture": "08:57:52",
+      "fin": "08:57:52",
+      "tokens": {
+        "entree": 30,
+        "cache_ecrit": 11605,
+        "cache_lu": 1417354,
+        "sortie": 6981
+      },
+      "nb_appels": 20,
+      "appels_par_outil": {
+        "Bash": 5,
+        "Edit": 4,
+        "WebFetch": 6,
+        "WebSearch": 1,
+        "mcp__Claude_Browser__javascript_tool": 3,
+        "mcp__ccd_turn__wrap_up": 1
+      }
+    },
+    {
+      "n": 4,
+      "debut": "08:59:14",
+      "premier_appel_outil": "08:59:17",
+      "questions_posees": null,
+      "reponses_recues": null,
+      "premier_fichier_ecrit": "08:59:32",
+      "premier_message_apres_ecriture": "08:59:49",
+      "fin": "08:59:49",
+      "tokens": {
+        "entree": 8,
+        "cache_ecrit": 3994,
+        "cache_lu": 323069,
+        "sortie": 2522
+      },
+      "nb_appels": 6,
+      "appels_par_outil": {
+        "Bash": 2,
+        "Edit": 2,
+        "WebFetch": 2
+      }
+    }
+  ],
+  "totaux": {
+    "tokens": {
+      "entree": 60,
+      "cache_ecrit": 58214,
+      "cache_lu": 2541029,
+      "sortie": 22857
+    },
+    "nb_appels": 45,
+    "appels_par_outil": {
+      "AskUserQuestion": 1,
+      "Bash": 9,
+      "Edit": 7,
+      "Read": 1,
+      "ToolSearch": 1,
+      "WebFetch": 10,
+      "WebSearch": 4,
+      "Write": 1,
+      "mcp__Claude_Browser__computer": 1,
+      "mcp__Claude_Browser__javascript_tool": 4,
+      "mcp__Claude_Browser__resize_window": 2,
+      "mcp__ccd_turn__update_plan": 2,
+      "mcp__ccd_turn__wrap_up": 2
+    }
+  },
+  "domaines_consultes": {
+    "blog-nouvelles-technologies.fr": 14,
+    "esante.gouv.fr": 2,
+    "blogmotion.fr": 1,
+    "linkedin.com": 1
+  },
+  "domaines_perimetre": "pages ouvertes par l'outil (lecture de pages, commandes, ouvertures) ; les domaines des résultats de recherche ne sont pas inclus",
+  "fichiers_ecrits": {
+    "index.html": 8
+  }
+}

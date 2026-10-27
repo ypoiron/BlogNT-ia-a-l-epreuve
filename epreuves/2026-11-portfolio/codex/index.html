@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2ec">
+  <meta name="description" content="Yohann Poiron — fondateur de BlogNT et expert en interopérabilité des données de santé.">
+  <title>Yohann Poiron — Relier les idées et les systèmes</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f2ec;
+      --surface: #fffdf8;
+      --ink: #222521;
+      --muted: #5e625c;
+      --line: #d9d8d0;
+      --accent: #bd4936;
+      --accent-ink: #fffaf4;
+      --soft: #e5e7dd;
+      --focus: #075eaa;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --paper: #171a18;
+      --surface: #202421;
+      --ink: #f2f0e8;
+      --muted: #b8bcb4;
+      --line: #3b413b;
+      --accent: #f18b70;
+      --accent-ink: #241713;
+      --soft: #292f2a;
+      --focus: #8dc7ff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; min-width: 320px; background: var(--paper); color: var(--ink); }
+    a { color: inherit; text-underline-offset: .22em; }
+    a:hover { color: var(--accent); }
+    :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; border-radius: 2px; }
+    .skip-link { position: absolute; z-index: 10; top: .75rem; left: .75rem; padding: .8rem 1rem; background: var(--ink); color: var(--paper); transform: translateY(-160%); }
+    .skip-link:focus { transform: translateY(0); }
+    .shell { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
+    header { display: flex; justify-content: space-between; align-items: center; min-height: 88px; border-bottom: 1px solid var(--line); }
+    .wordmark { text-decoration: none; font-size: .94rem; font-weight: 750; letter-spacing: -.035em; }
+    .wordmark span { color: var(--accent); }
+    .nav { display: flex; align-items: center; gap: clamp(1rem, 3vw, 2.4rem); }
+    .nav a, .theme-toggle { font: 600 .82rem var(--sans); text-decoration: none; }
+    .theme-toggle { cursor: pointer; padding: .6rem .75rem; border: 1px solid var(--line); border-radius: 999px; color: var(--ink); background: transparent; }
+    .hero { position: relative; display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(2rem, 7vw, 7rem); align-items: center; padding: clamp(5rem, 11vw, 9.5rem) 0 clamp(5rem, 10vw, 8rem); overflow: hidden; }
+    .eyebrow { margin: 0 0 1.5rem; color: var(--accent); font-size: .75rem; font-weight: 750; letter-spacing: .13em; text-transform: uppercase; }
+    h1 { max-width: 760px; margin: 0; font: 400 clamp(3.5rem, 8vw, 7.4rem)/.96 var(--serif); letter-spacing: -.065em; }
+    h1 em { color: var(--accent); font-weight: 400; }
+    .hero-copy { max-width: 610px; margin: 2rem 0 0; color: var(--muted); font-size: clamp(1.03rem, 1.6vw, 1.2rem); line-height: 1.8; }
+    .hero-copy strong { color: var(--ink); font-weight: 650; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+    .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; padding: .8rem 1.15rem; border: 1px solid var(--ink); border-radius: 3px; text-decoration: none; font-size: .88rem; font-weight: 700; transition: background .18s ease, color .18s ease, transform .18s ease; }
+    .button:hover { transform: translateY(-2px); }
+    .button.primary { background: var(--ink); color: var(--paper); }
+    .button.primary:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+    .button.secondary { border-color: var(--line); }
+    .orbit { position: relative; width: min(100%, 385px); aspect-ratio: 1; justify-self: end; display: grid; place-items: center; }
+    .orbit::before, .orbit::after { content: ""; position: absolute; border: 1px solid var(--line); border-radius: 50%; inset: 7%; }
+    .orbit::after { inset: 19%; border-style: dashed; }
+    .orbit-core { position: relative; z-index: 1; display: grid; place-items: center; width: 38%; aspect-ratio: 1; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font: 400 clamp(2.5rem, 6vw, 4.3rem) var(--serif); letter-spacing: -.08em; }
+    .orbit-node { position: absolute; z-index: 2; display: grid; place-items: center; padding: .6rem .8rem; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); font-size: .72rem; font-weight: 700; box-shadow: 0 5px 22px rgb(30 30 25 / 6%); }
+    .node-one { top: 9%; left: 2%; }.node-two { right: -2%; top: 45%; }.node-three { bottom: 6%; left: 16%; }
+    .section { border-top: 1px solid var(--line); padding: clamp(4rem, 8vw, 7rem) 0; }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .section-heading { display: grid; grid-template-columns: .55fr 1.45fr; gap: 3rem; align-items: start; margin-bottom: 3rem; }
+    .section-index { margin: .4rem 0 0; color: var(--accent); font-size: .76rem; font-weight: 750; letter-spacing: .12em; }
+    h2 { margin: 0; font: 400 clamp(2.5rem, 5vw, 4.6rem)/1.04 var(--serif); letter-spacing: -.045em; }
+    .story { display: grid; grid-template-columns: .55fr 1.45fr; gap: 3rem; }
+    .story-label { color: var(--muted); font-size: .83rem; line-height: 1.6; }
+    .story-text { max-width: 760px; }
+    .story-text p { margin: 0 0 1.3rem; color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.13rem); line-height: 1.9; }
+    .story-text p:first-child { color: var(--ink); font: 400 clamp(1.4rem, 2.7vw, 2rem)/1.45 var(--serif); }
+    .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; }
+    .work-card { min-height: 295px; padding: clamp(1.5rem, 3vw, 2.5rem); border: 1px solid var(--line); background: var(--surface); display: flex; flex-direction: column; align-items: flex-start; }
+    .work-card:first-child { background: var(--soft); }
+    .card-number { margin: 0 0 auto; color: var(--accent); font: 400 1.1rem var(--serif); }
+    .work-card h3 { margin: 2.4rem 0 .8rem; font: 400 clamp(1.8rem, 3.3vw, 2.8rem)/1 var(--serif); letter-spacing: -.04em; }
+    .work-card p { max-width: 480px; margin: 0 0 1.5rem; color: var(--muted); line-height: 1.75; }
+    .text-link { display: inline-flex; gap: .45rem; align-items: center; color: var(--ink); font-size: .87rem; font-weight: 700; }
+    .tests-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .test-card { min-width: 0; overflow: hidden; border: 1px solid var(--line); background: var(--surface); }
+    .test-image-link { display: block; overflow: hidden; aspect-ratio: 1.6; background: var(--soft); }
+    .test-image-link img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .35s ease; }
+    .test-image-link:hover img { transform: scale(1.035); }
+    .test-card-copy { display: grid; grid-template-columns: 1fr auto; gap: .8rem .5rem; padding: 1.25rem; align-items: start; }
+    .test-kicker { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: .7rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+    .test-card h3 { margin: 0; font: 400 clamp(1.25rem, 2vw, 1.7rem)/1.2 var(--serif); letter-spacing: -.025em; }
+    .test-card h3 a { text-decoration: none; }
+    .test-score { display: flex; align-items: baseline; gap: .1rem; margin: 0; color: var(--accent); white-space: nowrap; }
+    .test-score strong { font: 400 1.7rem/1 var(--serif); }
+    .test-score span { color: var(--muted); font-size: .72rem; }
+    .tests-more { margin: 1.5rem 0 0; text-align: right; }
+    .now { display: grid; grid-template-columns: .55fr 1.45fr; gap: 3rem; }
+    .now-content { border-left: 2px solid var(--accent); padding: .1rem 0 .1rem 1.5rem; }
+    .now-content p { max-width: 700px; margin: 0; color: var(--muted); font: 400 clamp(1.35rem, 2.5vw, 1.9rem)/1.55 var(--serif); }
+    .tags { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.7rem; }
+    .tag { padding: .45rem .72rem; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: .75rem; }
+    .contact { display: grid; grid-template-columns: .55fr 1.45fr; gap: 3rem; align-items: end; }
+    .contact-content h2 { max-width: 730px; }
+    .contact-content p { max-width: 550px; margin: 1.4rem 0 1.7rem; color: var(--muted); line-height: 1.8; }
+    footer { display: flex; justify-content: space-between; gap: 1rem; padding: 1.5rem 0 2.25rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .77rem; }
+    footer a { text-decoration: none; }
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 40px, 620px); }
+      header { min-height: 72px; }
+      .nav { gap: .9rem; }
+      .nav a { font-size: .76rem; }
+      .nav a[href="#parcours"] { display: none; }
+      .theme-toggle { padding: .5rem .65rem; font-size: .75rem; }
+      .hero { grid-template-columns: 1fr; gap: 3rem; padding: 5.3rem 0 4.5rem; }
+      .hero h1 { max-width: 580px; font-size: clamp(3.5rem, 14vw, 6.2rem); }
+      .orbit { width: min(74vw, 315px); justify-self: center; margin: 0 auto; }
+      .section-heading, .story, .now, .contact { grid-template-columns: 1fr; gap: 1.4rem; }
+      .section-heading { margin-bottom: 2rem; }
+      .story-label { max-width: 260px; }
+      .work-grid { grid-template-columns: 1fr; }
+      .tests-grid { grid-template-columns: 1fr; }
+      .test-card { display: grid; grid-template-columns: minmax(110px, .7fr) 1.3fr; }
+      .test-image-link { height: 100%; min-height: 155px; aspect-ratio: auto; }
+      .test-card-copy { grid-template-columns: 1fr auto; padding: 1rem; }
+      .test-card h3 { font-size: 1.35rem; }
+      .test-score strong { font-size: 1.45rem; }
+      .work-card { min-height: 265px; }
+      footer { flex-direction: column; }
+    }
+    @media (max-width: 420px) {
+      .shell { width: calc(100% - 32px); }
+      .wordmark { font-size: .84rem; }
+      .nav { gap: .55rem; }
+      .nav a { font-size: .7rem; }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .button { width: 100%; }
+      .test-card { display: block; }
+      .test-image-link { aspect-ratio: 1.6; height: auto; min-height: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <header class="shell">
+    <a class="wordmark" href="#accueil" aria-label="Yohann Poiron, accueil">YOHANN <span>POIRON</span></a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="#parcours">Parcours</a>
+      <a href="#engagements">Engagements</a>
+      <a href="#derniers-tests">Derniers tests</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" type="button" aria-label="Activer le mode sombre" aria-pressed="false">Mode sombre</button>
+    </nav>
+  </header>
+
+  <main id="contenu">
+    <section class="hero shell" id="accueil" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">Éditorial · Santé numérique · Interopérabilité</p>
+        <h1 id="hero-title">Faire parler<br>la <em>tech.</em><br>Relier ce qui compte.</h1>
+        <p class="hero-copy">Je suis Yohann Poiron. Depuis La Rochelle, je raconte les évolutions de la tech avec <strong>BlogNT</strong> et je contribue à rendre les échanges de données de santé plus simples, plus cohérents et plus utiles.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#parcours">Découvrir mon parcours <span aria-hidden="true">↘</span></a>
+          <a class="button secondary" href="https://www.linkedin.com/in/poironyohann/" target="_blank" rel="noopener noreferrer">Me retrouver sur LinkedIn <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="orbit" role="img" aria-label="Illustration abstraite des liens entre santé, technologie et rédaction">
+        <div class="orbit-core" aria-hidden="true">YP</div>
+        <span class="orbit-node node-one" aria-hidden="true">Santé</span>
+        <span class="orbit-node node-two" aria-hidden="true">Standards</span>
+        <span class="orbit-node node-three" aria-hidden="true">Tech &amp; idées</span>
+      </div>
+    </section>
+
+    <section class="section" id="parcours" aria-labelledby="story-title">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="section-index">01 / MON PARCOURS</p>
+          <h2 id="story-title">Deux terrains, une même curiosité.</h2>
+        </div>
+        <div class="story">
+          <p class="story-label">Écrire sur la technologie.<br>Connecter les systèmes de santé.</p>
+          <div class="story-text">
+            <p>J’ai toujours aimé comprendre ce qui se passe derrière les outils que l’on utilise — et raconter pourquoi cela compte.</p>
+            <p>En 2011, je lance BlogNT pour partager cette curiosité. Le média grandit avec les usages : du mobile aux objets connectés, des logiciels aux grandes questions qui façonnent le numérique. Aujourd’hui encore, j’y teste, j’y explique et j’y mets l’actualité en perspective.</p>
+            <p>En parallèle, mon parcours m’a conduit vers la santé numérique. J’y travaille à faire parler des systèmes qui, trop souvent, ne se comprennent pas. FHIR, HL7 et les profils d’interopérabilité sont des outils au service d’un objectif concret : transmettre la bonne information, au bon endroit, pour les professionnels et les patients.</p>
+            <p>Ces deux activités se nourrissent. L’une m’apprend à rendre la technologie lisible ; l’autre me rappelle que derrière chaque échange de données, il y a des usages et des personnes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="engagements" aria-labelledby="work-title">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="section-index">02 / MES ENGAGEMENTS</p>
+          <h2 id="work-title">Faire avancer les conversations et les connexions.</h2>
+        </div>
+        <div class="work-grid">
+          <article class="work-card">
+            <p class="card-number">01 — ÉDITORIAL</p>
+            <h3>BlogNT</h3>
+            <p>Depuis 2011, je dirige ce média indépendant consacré aux nouvelles technologies. Je veille, j’écris et je teste pour donner aux lecteurs des repères dans un paysage qui bouge vite.</p>
+            <a class="text-link" href="https://www.blog-nouvelles-technologies.fr/" target="_blank" rel="noopener noreferrer">Lire BlogNT <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="work-card">
+            <p class="card-number">02 — SANTÉ NUMÉRIQUE</p>
+            <h3>Interopérabilité</h3>
+            <p>Je contribue aux travaux qui rendent les données de santé compréhensibles et échangeables, en reliant standards, besoins de terrain et dynamiques européennes.</p>
+            <a class="text-link" href="https://www.interopsante.org/les-formateurs" target="_blank" rel="noopener noreferrer">Découvrir Interop’Santé <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="derniers-tests" aria-labelledby="tests-title">
+      <div class="shell">
+        <div class="section-heading">
+          <p class="section-index">03 / LECTURES RÉCENTES</p>
+          <h2 id="tests-title">Derniers tests</h2>
+        </div>
+        <div class="tests-grid">
+          <article class="test-card">
+            <a class="test-image-link" href="https://www.blog-nouvelles-technologies.fr/386363/test-google-fitbit-air/" target="_blank" rel="noopener noreferrer" aria-label="Lire le test du Google Fitbit Air sur BlogNT">
+              <img src="https://www.blog-nouvelles-technologies.fr/wp-content/uploads/2026/10/Fitbit_Air_86-1400x840.webp" alt="Bracelet connecté Google Fitbit Air, présenté dans son test BlogNT" loading="lazy" width="1400" height="840">
+            </a>
+            <div class="test-card-copy">
+              <p class="test-kicker">Bracelet connecté · 12 octobre 2026</p>
+              <h3><a href="https://www.blog-nouvelles-technologies.fr/386363/test-google-fitbit-air/" target="_blank" rel="noopener noreferrer">Google Fitbit Air : le bracelet sans écran qui défie Whoop</a></h3>
+              <p class="test-score" aria-label="Note : 7,8 sur 10"><strong>7,8</strong><span>/10</span></p>
+            </div>
+          </article>
+          <article class="test-card">
+            <a class="test-image-link" href="https://www.blog-nouvelles-technologies.fr/381921/test-samsung-galaxy-z-fold-8/" target="_blank" rel="noopener noreferrer" aria-label="Lire le test du Samsung Galaxy Z Fold 8 sur BlogNT">
+              <img src="https://www.blog-nouvelles-technologies.fr/wp-content/uploads/2026/10/Galaxy_Z_Fold_8_46-1400x840.webp" alt="Samsung Galaxy Z Fold 8 pliable, présenté dans son test BlogNT" loading="lazy" width="1400" height="840">
+            </a>
+            <div class="test-card-copy">
+              <p class="test-kicker">Smartphone pliable · 2 octobre 2026</p>
+              <h3><a href="https://www.blog-nouvelles-technologies.fr/381921/test-samsung-galaxy-z-fold-8/" target="_blank" rel="noopener noreferrer">Galaxy Z Fold 8 : le pliable format passeport</a></h3>
+              <p class="test-score" aria-label="Note : 8,5 sur 10"><strong>8,5</strong><span>/10</span></p>
+            </div>
+          </article>
+          <article class="test-card">
+            <a class="test-image-link" href="https://www.blog-nouvelles-technologies.fr/384680/test-ea-sports-fc-27/" target="_blank" rel="noopener noreferrer" aria-label="Lire le test de EA Sports FC 27 sur BlogNT">
+              <img src="https://www.blog-nouvelles-technologies.fr/wp-content/uploads/2026/09/ea-sports-fc-27-team-celebration.webp" alt="Équipe célébrant un but dans EA Sports FC 27, illustration de couverture du test BlogNT" loading="lazy" width="1200" height="630">
+            </a>
+            <div class="test-card-copy">
+              <p class="test-kicker">Jeu vidéo · 28 septembre 2026</p>
+              <h3><a href="https://www.blog-nouvelles-technologies.fr/384680/test-ea-sports-fc-27/" target="_blank" rel="noopener noreferrer">EA Sports FC 27 : la défense reprend le pouvoir</a></h3>
+              <p class="test-score" aria-label="Note : 7,5 sur 10"><strong>7,5</strong><span>/10</span></p>
+            </div>
+          </article>
+        </div>
+        <p class="tests-more"><a class="text-link" href="https://www.blog-nouvelles-technologies.fr/tests/" target="_blank" rel="noopener noreferrer">Tous mes tests sur BlogNT <span aria-hidden="true">↗</span></a></p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="now-title">
+      <div class="shell now">
+        <p class="section-index">04 / EN CE MOMENT</p>
+        <div class="now-content">
+          <h2 id="now-title" class="visually-hidden">En ce moment</h2>
+          <p>À l’intersection du national et de l’européen, je contribue à des travaux autour des spécifications FHIR et de l’Espace européen des données de santé. Mon fil rouge : transformer des cadres complexes en échanges concrets et utiles.</p>
+          <div class="tags" aria-label="Sujets de travail">
+            <span class="tag">FHIR</span><span class="tag">HL7</span><span class="tag">Interopérabilité</span><span class="tag">Santé numérique</span><span class="tag">Europe</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="shell contact">
+        <p class="section-index">05 / ÉCHANGEONS</p>
+        <div class="contact-content">
+          <h2 id="contact-title">Une idée à partager ?<br>La conversation commence ici.</h2>
+          <p>Pour parler de santé numérique, d’interopérabilité, de technologie ou d’un sujet à raconter, écris-moi ou retrouvons-nous sur LinkedIn.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="mailto:contact@example.com">M’écrire <span aria-hidden="true">↗</span></a>
+            <a class="button secondary" href="https://www.linkedin.com/in/poironyohann/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="shell">
+    <span>© <span id="year">2026</span> Yohann Poiron</span>
+    <a href="#accueil">Retour en haut ↑</a>
+    <span>La Rochelle · France</span>
+  </footer>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const button = document.querySelector('.theme-toggle');
+      const stored = localStorage.getItem('theme');
+      const preferredDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const initial = stored || (preferredDark ? 'dark' : 'light');
+      const setTheme = (theme) => {
+        root.dataset.theme = theme;
+        const dark = theme === 'dark';
+        button.setAttribute('aria-pressed', String(dark));
+        button.setAttribute('aria-label', dark ? 'Activer le mode clair' : 'Activer le mode sombre');
+        button.textContent = dark ? 'Mode clair' : 'Mode sombre';
+        document.querySelector('meta[name="theme-color"]').content = dark ? '#171a18' : '#f5f2ec';
+      };
+      setTheme(initial);
+      button.addEventListener('click', () => {
+        const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('theme', next);
+        setTheme(next);
+      });
+      document.querySelector('#year').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

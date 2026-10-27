@@ -1,0 +1,8 @@
+# Journaux bruts : ne jamais publier, seulement les versions nettoyées
+*.raw.jsonl
+brut/
+.env
+.DS_Store
+node_modules/
+__pycache__/
+transcript.md
